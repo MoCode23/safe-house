@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmls:th="http://www.thymeleaf.org/" xmlns:xmls="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title th:text="${title}">Safe House</title>
+</head>
+<body>
+
+<nav th:fragment="navigation">
+    <a href="/safehouse">Houses</a>
+    <a href="/safehouse/add">Add House</a>
+</nav>
+
+</body>
+</html>
