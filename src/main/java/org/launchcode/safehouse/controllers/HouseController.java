@@ -30,8 +30,20 @@ public class HouseController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddHouseForm(@RequestParam String houseZip){
-        houses.add(houseZip);
+    public String processAddHouseForm(@RequestParam String city){
+        houses.add(city);
+        return "redirect:";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.GET)
+    public String displayRemoveHouseForm(Model model){
+        model.addAttribute("title", "Remove House");
+        return "house/remove";
+    }
+
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String processRemoveHouseForm(Model model){
+        // add ID mapping with hashmap
         return "redirect:";
     }
 }

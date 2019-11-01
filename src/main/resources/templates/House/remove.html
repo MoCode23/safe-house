@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+<h1 th:text="${title}"></h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method = "post">
+    <div th:each = "house : ${houses}" class = "checkbox">
+        <!-- Uses house.name to display cheese name on remove form and uses house.id to remove unique house from list-->
+        <input type = "checkbox" name = "ids" th:value="${house.id}" th:id="${house.id}" />
+        <label th:for="${house.id}" th:text="${house.zip}"></label>
+        <br />
+    </div>
+    <input type ="submit" value = "Remove House"/>
+
+</form>
+
+</body>
+</html>
