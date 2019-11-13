@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 
+import org.launchcode.safehouse.models.House
+
 @Controller
 @RequestMapping("safehouse")                    // request path: /safehouse
 public class HouseController {
@@ -30,20 +32,25 @@ public class HouseController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddHouseForm(@RequestParam String city){
-        houses.add(city);
+    public String processAddHouseForm(@RequestParam String address, @RequestParam int zip, @RequestParam String email) {
+        House newHouse = new House (address, zip, email)
+        houses.add(newHouse);
         return "redirect:";
     }
 
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String displayRemoveHouseForm(Model model){
+        model.addAttribute("houses", houses)
         model.addAttribute("title", "Remove House");
         return "house/remove";
     }
 
     @RequestMapping(value = "remove", method = RequestMethod.POST)
-    public String processRemoveHouseForm(Model model){
-        // add ID mapping with hashmap
+    public String processRemoveHouseForm(@RequestParam ArrayList<String> house){
+
+        for (String aHouse : house) {
+            houses.remove(aHouse);
+        }
         return "redirect:";
     }
 }

@@ -10,9 +10,19 @@
     <p th:unless="${houses} and ${houses.size()}">No Safe Houses Listed</p>
 
 
-<ul>
-    <li th:each="house : ${houses}" th:text="${house}"></li>
-</ul>
+<table class="table">
+    <tr>
+        <th>Address</th>
+        <th>Zip Code</th>
+        <th>Email</th>
+    </tr>
+
+    <tr th:each="house : ${houses}">
+        <td th:text="${house.address}"></td>
+        <td th:text="${house.zip}"></td>
+        <td th:text="${house.email}"></td>
+    </tr>
+</table>
 
 </body>
 </html>
