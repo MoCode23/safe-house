@@ -13,10 +13,10 @@ public class House {
         AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MA, MI, MN, MS, MO,
         MT, NE, NV, NH, NJ, NM, NY, NC, ND, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VT, VA, WA, WV, WI, WY;
     }
-    private int zip;
+    private String zip;
     private String email;
 
-    public House(int id, String address, int zip, String email) {
+    public House(int id, String address, String zip, String email) {
         this.id = id;
         this.address = address;
         this.zip = zip;
@@ -39,11 +39,11 @@ public class House {
         this.address = address;
     }
 
-    public int getZip() {
+    public String getZip() {
         return zip;
     }
 
-    public void setZip(int zip) {
+    public void setZip(String zip) {
         this.zip = zip;
     }
 
