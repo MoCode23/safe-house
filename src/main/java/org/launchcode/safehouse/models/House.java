@@ -1,10 +1,13 @@
 package org.launchcode.safehouse.models;
 
 
+import com.sun.istack.internal.NotNull;
+
 public class House {
 
     private int houseId;
     private static int nextId =1;
+    @NotNull
     private String address;
 
     public House(String address, int zip, String email) {
@@ -15,7 +18,9 @@ public class House {
         MT, NE, NV, NH, NJ, NM, NY, NC, ND, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VT, VA, WA, WV, WI, WY;
     }*/
 
+    @NotNull
     private String zip;
+    @NotNull
     private String email;
 
     public House(int id, String address, String zip, String email) {

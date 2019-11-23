@@ -4,10 +4,13 @@ import org.launchcode.safehouse.models.House;
 import org.launchcode.safehouse.models.HouseData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("safehouse")                    // request path: /safehouse
@@ -30,7 +33,11 @@ public class HouseController {
     }
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
-    public String processAddHouseForm(@ModelAttribute House newHouse) {
+    public String processAddHouseForm(@ModelAttribute @Valid House newHouse, Errors errors, Model model) {
+
+        if (errors.hasErrors()){
+            model.addAttribute("title", "Add House");
+        }
         HouseData.add(newHouse);
         return "redirect:";
     }
