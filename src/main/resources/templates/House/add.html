@@ -7,11 +7,23 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-<form method="post">
-    <input type="text" name="address"/>
-    <input type="text" name="zip"/>
-    <input type="text" name="email" />
-    <input type="submit" value="Add House" />
+<form method="post" th:object="${house}">
+    <div class="form-group">
+        <label th:for="address">Address</label>
+        <input class="form-control" th:field="*{address}"/>
+        <span th:errors="*{address}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="zip">Zip Code</label>
+        <input class="form-control" th:field="*{zip}"/>
+        <span th:errors="*{zip}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="email">Email</label>
+        <input class="form-control" th:field="*{email}"/>
+        <span th:errors="*{email}" class="error"></span>
+    </div>
+        <input type="submit" value="Add House" />
 </form>
 
 </body>

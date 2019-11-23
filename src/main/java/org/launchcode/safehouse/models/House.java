@@ -1,13 +1,17 @@
 package org.launchcode.safehouse.models;
 
 
-import com.sun.istack.internal.NotNull;
+import javax.validation.constraints.NotNull;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 public class House {
 
     private int houseId;
     private static int nextId =1;
     @NotNull
+    @Size(min=1, message = "You must fill in your address.")
     private String address;
 
     public House(String address, int zip, String email) {
@@ -19,8 +23,10 @@ public class House {
     }*/
 
     @NotNull
+    @Size(min=5)
     private String zip;
     @NotNull
+    @Email
     private String email;
 
     public House(int id, String address, String zip, String email) {

@@ -29,6 +29,7 @@ public class HouseController {
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddHouseForm(Model model){
         model.addAttribute("title", "Add House");
+        model.addAttribute(new House());
         return "house/add";
     }
 
