@@ -1,9 +1,9 @@
 package org.launchcode.safehouse.models;
 
 
-import javax.validation.constraints.NotNull;
-
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class House {
@@ -13,23 +13,20 @@ public class House {
     @NotNull
     @Size(min=1, message = "You must fill in your address.")
     private String address;
-
-    public House(String address, int zip, String email) {
-    }
-
     /*public enum state {
         AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MA, MI, MN, MS, MO,
         MT, NE, NV, NH, NJ, NM, NY, NC, ND, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VT, VA, WA, WV, WI, WY;
     }*/
-
     @NotNull
-    @Size(min=5)
+    @Min(value = 5, message = "Your zip code must be at at least 5 digits.")
     private String zip;
     @NotNull
+    @Size(min=1, message = "You must fill in your email address.")
     @Email
     private String email;
 
     public House(int id, String address, String zip, String email) {
+        this();
         this.houseId = id;
         this.address = address;
         this.zip = zip;

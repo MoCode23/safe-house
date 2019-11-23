@@ -38,6 +38,7 @@ public class HouseController {
 
         if (errors.hasErrors()){
             model.addAttribute("title", "Add House");
+            return "house/add";
         }
         HouseData.add(newHouse);
         return "redirect:";
