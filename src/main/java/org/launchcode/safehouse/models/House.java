@@ -3,32 +3,38 @@ package org.launchcode.safehouse.models;
 
 public class House {
 
-    private int id;
+    private int houseId;
+    private static int nextId =1;
     private String address;
 
     public House(String address, int zip, String email) {
     }
 
-    public enum state {
+    /*public enum state {
         AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MA, MI, MN, MS, MO,
         MT, NE, NV, NH, NJ, NM, NY, NC, ND, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VT, VA, WA, WV, WI, WY;
-    }
+    }*/
+
     private String zip;
     private String email;
 
     public House(int id, String address, String zip, String email) {
-        this.id = id;
+        this.houseId = id;
         this.address = address;
         this.zip = zip;
         this.email = email;
     }
 
-    public int getId() {
-        return id;
+    public House(){
+        houseId = nextId;
+        nextId++;
+    }
+    public int getHouseId() {
+        return houseId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setHouseId(int houseId) {
+        this.houseId = houseId;
     }
 
     public String getAddress() {

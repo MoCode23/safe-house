@@ -10,8 +10,8 @@
 <form method = "post">
     <div th:each = "house : ${houses}" class = "checkbox">
         <!-- Uses house.name to display cheese name on remove form and uses house.id to remove unique house from list-->
-        <input type = "checkbox" name = "ids" th:value="${house.id}" th:id="${house.id}" />
-        <label th:for="${house.id}" th:text="${house.zip}"></label>
+        <input type = "checkbox" name = "houseIds" th:value="${house.houseId}" th:id="${house.houseId}" />
+        <label th:for="${house.houseId}" th:text="${house.address}"></label>
         <br />
     </div>
     <input type ="submit" value = "Remove House"/>
