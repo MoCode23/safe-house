@@ -2,6 +2,7 @@ package org.launchcode.safehouse.controllers;
 
 import org.launchcode.safehouse.models.House;
 import org.launchcode.safehouse.models.HouseData;
+import org.launchcode.safehouse.models.HouseState;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -30,6 +31,7 @@ public class HouseController {
     public String displayAddHouseForm(Model model){
         model.addAttribute("title", "Add House");
         model.addAttribute(new House());
+        model.addAttribute("houseStates", HouseState.values());
         return "house/add";
     }
 

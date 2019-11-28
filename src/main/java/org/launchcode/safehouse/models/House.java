@@ -13,10 +13,8 @@ public class House {
     @NotNull
     @Size(min=1, message = "You must fill in your address.")
     private String address;
-    /*public enum state {
-        AL, AK, AZ, AR, CA, CO, CT, DE, FL, GA, HI, ID, IL, IN, IA, KS, KY, LA, ME, MD, MA, MI, MN, MS, MO,
-        MT, NE, NV, NH, NJ, NM, NY, NC, ND, OH, OK, OR, PA, RI, SC, SD, TN, TX, UT, VT, VA, WA, WV, WI, WY;
-    }*/
+    private HouseState state;
+
     @NotNull
     @Min(value = 5, message = "Your zip code must be at at least 5 digits.")
     private String zip;
@@ -67,5 +65,13 @@ public class House {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public HouseState getState() {
+        return state;
+    }
+
+    public void setState(HouseState state) {
+        this.state = state;
     }
 }

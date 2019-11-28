@@ -13,12 +13,14 @@
 <table class="table">
     <tr>
         <th>Address</th>
+        <th>State</th>
         <th>Zip Code</th>
         <th>Email</th>
     </tr>
 
     <tr th:each="house : ${houses}">
         <td th:text="${house.address}"></td>
+        <td th:text="${house.state.name}"></td>
         <td th:text="${house.zip}"></td>
         <td th:text="${house.email}"></td>
     </tr>
