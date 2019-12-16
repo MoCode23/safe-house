@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+<h1 th:text="${title}"></h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<div class="container">
+    <form class="form-inline" method="post" action="search.jsp">
+        <input type="text" name="roll_no" class="form-control" placeholder="Search roll no..">
+        <button type="submit" name="save" class="btn btn-primary">Search</button>
+    </form>
+</div>
+</body>
+</html>

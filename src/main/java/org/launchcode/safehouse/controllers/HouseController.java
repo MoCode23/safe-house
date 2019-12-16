@@ -63,4 +63,14 @@ public class HouseController {
         }
         return "redirect:";
     }
+
+    @RequestMapping(value = "search", method = RequestMethod.GET)
+    public String displaySearchHouseForm() {
+        return "house/search";
+    }
+
+    @RequestMapping(value = "search", method = RequestMethod.POST)
+    public String processSearchHouseForm() {
+        return "redirect:";
+    }
 }
