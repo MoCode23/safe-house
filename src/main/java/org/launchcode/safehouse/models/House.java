@@ -1,15 +1,19 @@
 package org.launchcode.safehouse.models;
 
 
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Entity
 public class House {
 
-    private int houseId;
-    private static int nextId =1;
+    @Id
+    @GeneratedValue
+    private int id;
+
     @NotNull
     @Size(min=1, message = "You must fill in your address.")
     private String address;
@@ -24,23 +28,16 @@ public class House {
     private String email;
 
     public House(int id, String address, String zip, String email) {
-        this();
-        this.houseId = id;
+
         this.address = address;
         this.zip = zip;
         this.email = email;
     }
 
-    public House(){
-        houseId = nextId;
-        nextId++;
-    }
-    public int getHouseId() {
-        return houseId;
-    }
+    public House(){ }
 
-    public void setHouseId(int houseId) {
-        this.houseId = houseId;
+    public int getId() {
+        return id;
     }
 
     public String getAddress() {

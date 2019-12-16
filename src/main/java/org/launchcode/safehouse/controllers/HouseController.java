@@ -1,8 +1,9 @@
 package org.launchcode.safehouse.controllers;
 
 import org.launchcode.safehouse.models.House;
-import org.launchcode.safehouse.models.HouseData;
 import org.launchcode.safehouse.models.HouseState;
+import org.launchcode.safehouse.models.data.HouseDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -17,12 +18,13 @@ import javax.validation.Valid;
 @RequestMapping("safehouse")                    // request path: /safehouse
 public class HouseController {
 
-
+    @Autowired
+    private HouseDao houseDao;
 
     @RequestMapping(value = "")
     public String index(Model model) {
 
-        model.addAttribute("houses", HouseData.getAll());
+        model.addAttribute("houses", houseDao.findAll());
         model.addAttribute("title", "Safe House");
         return "house/index";
     }
@@ -42,22 +44,22 @@ public class HouseController {
             model.addAttribute("title", "Add House");
             return "house/add";
         }
-        HouseData.add(newHouse);
+        houseDao.save(newHouse);
         return "redirect:";
     }
 
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String displayRemoveHouseForm(Model model){
-        model.addAttribute("houses", HouseData.getAll());
+        model.addAttribute("houses", houseDao.findAll());
         model.addAttribute("title", "Remove House");
         return "house/remove";
     }
 
     @RequestMapping(value = "remove", method = RequestMethod.POST)
-    public String processRemoveHouseForm(@RequestParam int[] houseIds){
+    public String processRemoveHouseForm(@RequestParam int[] ids){
 
-        for (int houseId : houseIds) {
-            HouseData.remove(houseId);
+        for (int id : ids) {
+            houseDao.deleteById(id);
         }
         return "redirect:";
     }
