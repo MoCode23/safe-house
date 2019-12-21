@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 
 @Controller
 @RequestMapping("safehouse")                    // request path: /safehouse
@@ -70,7 +71,19 @@ public class HouseController {
     }
 
     @RequestMapping(value = "search", method = RequestMethod.POST)
-    public String processSearchHouseForm() {
-        return "redirect:";
+    public String processSearchHouseForm(Model model, @RequestParam(value="roll_no") String roll_no) {
+        ArrayList<House> searchResults = new ArrayList<House>();
+
+        for ( House house : houseDao.findAll())  {
+            if (house.getAddress().toLowerCase().contains(roll_no.toLowerCase()) ||
+                    house.getState().getName().toLowerCase().contains(roll_no.toLowerCase()) ||
+                    house.getZip().toLowerCase().contains(roll_no.toLowerCase())) {
+                searchResults.add(house);
+            }
+
+
+        }
+        model.addAttribute("houses", searchResults);
+        return "House/index";
     }
 }
